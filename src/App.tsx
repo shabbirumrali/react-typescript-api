@@ -11,12 +11,15 @@ const App:FC = () => {
 
   const [data, setData]: [any, (data: any) => void] = useState<any>()
   const [refButton, setRefButton]: [boolean, (refButton: boolean) => void] = useState<boolean>(false)
+  localStorage.setItem("LOCAL__DATA__TITLE", data[0].name.title)
+  localStorage.setItem("LOCAL__DATA__FIRST", data[0].name.first)
+  localStorage.setItem("LOCAL__DATA__LAST", data[0].name.last)
     
   // console.log("data value out side of useeffect", data)
   // setName(data.data.results)
   // console.log("results value: ", name)
-
   // setName(data.result[0].name)
+
   const getData = async () => {
     await axios
       .get('https://randomuser.me/api')
@@ -31,7 +34,7 @@ const App:FC = () => {
   useEffect(() => {    
       const valueData = getData()
       console.log(valueData)
-  }, [refButton])
+  }, [refButton])   
   // setName(data.data.results)
   // console.log("results value: ", name)
 
@@ -41,7 +44,7 @@ const App:FC = () => {
           <div className="container">
           <header>
             <p>Welcome Back!</p>
-            <h1>{data[0].name.title} {data[0].name.first} {data[0].name.last}</h1>
+            <h1>{localStorage.getItem("LOCAL__DATA__TITLE")} {localStorage.getItem("LOCAL__DATA__FIRST")} {localStorage.getItem("LOCAL__DATA__LAST")} </h1>            
           </header>
           <section>
             <div className='req_info'>
@@ -66,6 +69,11 @@ const App:FC = () => {
               <button onClick={() => setRefButton(!refButton)}><FiRefreshCcw /></button>
             </div>
           </section>
+          <ul>
+            <li>used local storage you can check that in application at developer tool</li>
+            <li>use of typescript</li>
+            <li>axios as async request for api</li>
+          </ul>
         </div>
       ) : null }      
     </div>
