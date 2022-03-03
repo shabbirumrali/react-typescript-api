@@ -11,9 +11,9 @@ const App:FC = () => {
 
   const [data, setData]: [any, (data: any) => void] = useState<any>()
   const [refButton, setRefButton]: [boolean, (refButton: boolean) => void] = useState<boolean>(false)
-  localStorage.setItem("LOCAL__DATA__TITLE", data[0].name.title)
-  localStorage.setItem("LOCAL__DATA__FIRST", data[0].name.first)
-  localStorage.setItem("LOCAL__DATA__LAST", data[0].name.last)
+  // localStorage.setItem("LOCAL__DATA__TITLE", data[0].name.title)
+  // localStorage.setItem("LOCAL__DATA__FIRST", data[0].name.first)
+  // localStorage.setItem("LOCAL__DATA__LAST", data[0].name.last)
     
   // console.log("data value out side of useeffect", data)
   // setName(data.data.results)
@@ -44,7 +44,8 @@ const App:FC = () => {
           <div className="container">
           <header>
             <p>Welcome Back!</p>
-            <h1>{localStorage.getItem("LOCAL__DATA__TITLE")} {localStorage.getItem("LOCAL__DATA__FIRST")} {localStorage.getItem("LOCAL__DATA__LAST")} </h1>            
+            {/* <h1>{localStorage.getItem("LOCAL__DATA__TITLE")} {localStorage.getItem("LOCAL__DATA__FIRST")} {localStorage.getItem("LOCAL__DATA__LAST")} </h1>             */}
+            <h1>{data[0].name.title} {data[0].name.first} {data[0].name.last}</h1>
           </header>
           <section>
             <div className='req_info'>
